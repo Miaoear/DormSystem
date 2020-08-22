@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.guet.mapper.MenuMapper">
+
+	<resultMap id="getMenuAndChildMenusMap" type="menu">
+		<id property="menuid" column="MENUID"/>
+		<result property="pId" column="PID"/>
+		<result property="name" column="NAME"/>
+		<result property="icon" column="ICON"/>
+		<result property="url" column="URL"/>
+
+		<collection property="childMenus" column="MenuID" select="getChildMenuByPID"></collection>
+
+	</resultMap>
+
+	<select id="getChildMenuByPID" resultMap="getMenuAndChildMenusMap">
+		SELECT c.* FROM SSmenus c,SSmenus p WHERE c.pid=p.menuid AND p.menuid=#{value}
+	</select>
+
+	<select id="getMenuById" resultMap="getMenuAndChildMenusMap">
+		SELECT * FROM SSmenus WHERE menuid=#{value}
+	</select>
+	<select id="getAllMenu" resultMap="getMenuAndChildMenusMap">
+		SELECT * FROM SSmenus WHERE pId is NULL
+	</select>
+
+	<select id="getRoleMenu" resultMap="getMenuAndChildMenusMap">
+		SELECT sm.* FROM SSmenus sm,SSuser_role su,SSrole_menu sr WHERE su.roleid=sr.roleid AND sm.menuid=sr.menuid AND su.userid=#{value}
+	</select>
+</mapper>

@@ -33,4 +33,17 @@
 		WHERE userId=#{userId}
 	</update>
 
+	<insert id="saveStu" parameterType="cn.edu.guet.model.User">
+        INSERT INTO ssusers VALUES(#{userId},#{username},#{password},#{sex},#{dorno},#{phone})
+    </insert>
+	<insert id="saveRole">
+        INSERT INTO ssuser_role VALUES (#{userId},#{roleId})
+    </insert>
+	<delete id="deleteStu" parameterType="cn.edu.guet.model.User">
+        DELETE FROM ssusers WHERE userid=#{userId}
+    </delete>
+	<delete id="deleteRole" parameterType="cn.edu.guet.model.User">
+        DELETE FROM ssuser_role WHERE userid=#{userId}
+    </delete>
+
 </mapper>

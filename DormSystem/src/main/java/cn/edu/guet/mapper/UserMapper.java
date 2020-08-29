@@ -11,6 +11,11 @@ public interface UserMapper {
     User login(@Param("userId") String userId, @Param("password") String password);
 
     List<User> showStu(String rolename);
-
     void updateStu(User user);
+
+
+    void saveStu(User user) throws Exception;
+    void saveRole(@Param("userId") String userId, @Param("roleId") String roleId) throws Exception;
+    void deleteStu(String userId) throws Exception;
+    void deleteRole(String userId) throws Exception;
 }

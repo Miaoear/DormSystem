@@ -34,7 +34,7 @@ public class MenuController {
      * @param
      * @return user的信息（json格式），我们的login方法上使用了@ResponseBody注解后，会自动返回json数据
      */
-    @RequestMapping(value = "showAllMeun",method = {RequestMethod.POST}) //showMenu
+    @RequestMapping(value = "showAllMenu",method = {RequestMethod.POST}) //showMenu
     @ResponseBody
     public Result showAllMenu(){  // showMenu
 

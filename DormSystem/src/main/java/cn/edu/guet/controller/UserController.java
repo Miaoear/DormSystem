@@ -59,8 +59,30 @@ public class UserController {
 
     @RequestMapping("updateStu")//value = "updateStu",method = {RequestMethod.POST}
     @ResponseBody
-    public Result updateStu(@RequestBody User user){
+    public Result updateStu(User user){
         userService.updateStu(user);
         return Result.succ("修改成功");
+    }
+
+    @RequestMapping(value = "saveUser",method = {RequestMethod.POST})
+    @ResponseBody
+    public Result saveUser(User user) {
+        try {
+            userService.saveStu(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.succ("添加成功");
+    }
+
+    @RequestMapping(value = "deleteStu",method = {RequestMethod.POST})
+    @ResponseBody
+    public Result deleteStu(String userId) {
+        try {
+            userService.deleteStu(userId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.succ("删除成功");
     }
 }

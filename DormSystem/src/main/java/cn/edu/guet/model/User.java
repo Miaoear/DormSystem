@@ -1,6 +1,8 @@
 package cn.edu.guet.model;
 
 
+import java.util.List;
+
 public class User {
 
     private String userId;
@@ -9,7 +11,7 @@ public class User {
     private String sex;
     private String dorno;
     private String phone;
-    //private List<Role> roles;
+    private List<Role> roles;
     //private List<User> users;
 
     public String getUserId() {
@@ -60,4 +62,11 @@ public class User {
         this.phone = phone;
     }
 
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
 }

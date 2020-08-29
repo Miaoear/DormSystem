@@ -33,4 +33,17 @@ public class UserServiceImpl implements IUserService {
         userMapper.updateStu(user);
     }
 
+    @Override
+    public void saveStu(User user) throws Exception {
+        userMapper.saveStu(user);
+        userMapper.saveRole(user.getUserId(),"R0001");//user.getRoles().get(0).getRoleId()
+    }
+
+    @Override
+    public void deleteStu(String userId) throws Exception {
+        userMapper.deleteRole(userId);
+        userMapper.deleteStu(userId);
+
+    }
+
 }

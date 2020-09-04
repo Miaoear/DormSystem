@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.guet.mapper.FangkeMapper">
+
+    <insert id="laifang" parameterType="fangke">
+        INSERT INTO ssfangke VALUES (#{FKID},#{lFName},#{sFName},#{relation},#{startTime},#{endTime})
+    </insert>
+    <select id="chaxun" resultType="fangke">
+        SELECT * FROM ssfangke
+    </select>
+    <update id="bianji" parameterType="fangke">
+        UPDATE ssfangke SET lFName=#{lFName},sFName=#{sFName},relation=#{relation},startTime=#{startTime},endTime=#{endTime} WHERE FKID=#{FKID}
+    </update>
+
+</mapper>

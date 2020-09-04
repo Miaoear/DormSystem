@@ -38,11 +38,16 @@ public class UserController {
         System.out.println("userId: "+userId);
         System.out.println("password: "+password);
         User user=userService.login(userId,password);
-        if(user!=null){
-            return Result.succ(user);
-        }else{
-            return Result.fail("请求失败");
+        if (userId==null){
+            return Result.fail("用户不存在");
+        }else {
+            if(user!=null){
+                return Result.succ(user);
+            }else{
+                return Result.fail("请求失败");
+            }
         }
+
     }
 
     @RequestMapping("showStu")  //value = "showStu",method = {RequestMethod.POST}

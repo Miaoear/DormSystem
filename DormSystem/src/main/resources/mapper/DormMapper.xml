@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.guet.mapper.DormMapper">
+    <resultMap id="getDorm" type="ssdorm">
+        <id property="dorNo" column="DORNO"/>
+        <result property="dorManage" column="DORMANAGE"/>
+        <result property="bedNum" column="BEDNUM"/>
+    </resultMap>
+
+    <select id="selectDorm" resultMap="getDorm">
+        SELECT  * FROM ssdorm
+    </select>
+    <update id="updateDorm" parameterType="cn.edu.guet.model.SsDorm">
+    UPDATE ssdorm SET dormanage=#{dorManage},bednum=#{bedNum} WHERE dorno=#{dorNo}
+    </update>
+    <delete id="deleteDorm" parameterType="String">
+        DELETE from ssdorm WHERE dorNo=#{dorNo}
+    </delete>
+    <insert id="saveDorm" parameterType="cn.edu.guet.model.SsDorm">
+		INSERT INTO ssdorm VALUES(#{dorNo},#{dorManage},#{bedNum})
+</insert>
+</mapper>
